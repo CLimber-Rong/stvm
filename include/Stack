@@ -1,0 +1,71 @@
+/*
+	Name: Stack.cpp
+	Copyright: Apache 2.0
+	Author: 瞿相荣 
+	Date: 17/01/23 18:06
+	Description: 栈库，基于stack.h
+*/
+#ifndef STACK_CPP
+#define STACK_CPP
+
+#include"stack.h"
+class Stack {
+	STACK* stack;
+	public:
+		Stack();								//构造函数 
+		int clear();							//清空
+		int destroy();							//销毁
+		int empty();							//是否为空
+		int size();								//元素个数
+		void* peek();							//获取栈顶元素
+		int push(void* data); 					//入栈
+		void* pop();							//出栈
+		int traverse(STACK_VISIT visit); 		//从栈底到栈顶依次遍历，具体操作见stack.h 
+};
+
+Stack::Stack()
+{
+	stack = InitStack();
+}
+
+int Stack::clear()
+{
+	return ClearStack(stack);
+}
+
+int Stack::destroy()
+{
+	return DestroyStack(stack);
+}
+
+int Stack::empty()
+{
+	return StackEmpty(stack);
+}
+
+int Stack::size()
+{
+	return StackLength(stack);
+}
+
+void* Stack::peek()
+{
+	return GetTop(stack);
+}
+
+int Stack::push(void* data)
+{
+	return PushStack(stack,data);
+}
+
+void* Stack::pop()
+{
+	return PopStack(stack,data);
+}
+
+int Stack::traverse(STACK_VISIT visit)
+{
+	return StackTraverse(stack,visit);
+}
+
+#endif
