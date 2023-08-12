@@ -1,46 +1,48 @@
 /*
 	Name: strie.h
 	Copyright: Apache 2.0 License
-	Author: öÄÏàÈÙ
+	Author: ç¿ç›¸è£
 	Date: 25/10/22 08:22
-	Description: CÓïÑÔ×ÖµäÊ÷¿â£¨½öÖ§³ÖÆÕÍ¨ASCIIÂë´æ´¢£©£¬°æ±¾1.0.0.0
+	Description: Cè¯­è¨€å­—å…¸æ ‘åº“ï¼ˆä»…æ”¯æŒæ™®é€šASCIIç å­˜å‚¨ï¼‰ï¼Œç‰ˆæœ¬1.0.0.0
 */
 
 
 #ifndef STRIE_H
 #define STRIE_H
 
-#include"lib.h"
+#include"stdlib.h"
+#include"string.h"
+#include"stack.h"
 
-typedef int (*TRIE_VISIT)(void*);							//±éÀúµÄº¯ÊıÖ¸Õë½Ó¿Ú
+typedef int (*TRIE_VISIT)(void*);							//éå†çš„å‡½æ•°æŒ‡é’ˆæ¥å£
 
 typedef struct _STRIE_NODE_TYPE {
-	void* data;				//Êı¾İÓò
-	int isexist;			//ÊÇ·ñ´æÔÚ£¬´æÔÚÎª1£¬²»´æÔÚÎª0
+	void* data;				//æ•°æ®åŸŸ
+	int isexist;			//æ˜¯å¦å­˜åœ¨ï¼Œå­˜åœ¨ä¸º1ï¼Œä¸å­˜åœ¨ä¸º0
 	struct _STRIE_NODE_TYPE* child[128];
 } STRIE;
 
-STRIE* InitTrie();											//³õÊ¼»¯Ê÷£¬³É¹¦·µ»ØµØÖ·£¬Ê§°Ü·µ»ØNULL
-int SetTrieKeyVal(STRIE* trie,char* key,void* val);			//ÉèÖÃ¼ü-Öµ£¬³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0£¬¿ÉÒÔÓÃ´Ë½Ó¿Ú´´½¨¼ü-ÖµºÍ¸ü¸ÄÒÑÓĞ¼ü-Öµ
-int DelTrieKeyVal(STRIE* trie,char* key);					//É¾³ı¼ü-Öµ£¬³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0
-void* GetTrieKeyVal(STRIE* trie,char* key);					//¸ù¾İ¼ü»ñµÃ»ñµÃÖµ£¬³É¹¦·µ»ØÖµ£¬Ê§°Ü·µ»ØNULL£¬
-//·µ»ØNULLÊ±²»ÅÅ³ıÊı¾İÓòµÄÖ¸Õë±¾À´¾ÍµÈÓÚNULL£¬
-//ĞèÅäºÏTrieExistKeyVal()½Ó¿ÚÅĞ¶Ï
-int TrieExistKeyVal(STRIE* trie,char* key);					//¼ü-ÖµÊÇ·ñ´æÔÚ£¬´æÔÚÔò·µ»Ø1£¬²»´æÔÚÔò·µ»Ø0
-int ClearTrie(STRIE* trie);									//Çå¿ÕËùÓĞ¼ü-Öµ£¬³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0
-int DestroyTrie(STRIE* trie);								//Ïú»ÙÊ÷£¬³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0
-int TrieEmpty(STRIE* trie);									//Ê÷ÊÇ·ñÎª¿Õ£¬ÊÇÔò·µ»Ø1£¬·ñÔò·µ»Ø0£¬´íÎó·µ»Ø-1
-int TrieTraverse(STRIE* trie,TRIE_VISIT visit);				//¶ÔÊ÷ÖĞËùÓĞÔªËØÒÀ´Îµ÷ÓÃvisitº¯Êı
-//ÒªÇóvisitº¯Êı²ÎÊıÎªÊı¾İ£¬visit·µ»Ø1´ú±í´¦Àí³É¹¦£¬²¢¿ªÊ¼´¦ÀíÏÂÒ»¸öÔªËØ
-//·µ»Ø0´ú±í´¦ÀíÊ§°Ü£¬StackTraverseÔòÖÕÖ¹´¦Àí²¢ÍË³ö
-//·µ»Ø³É¹¦´¦ÀíµÄÔªËØ¸öÊı
+STRIE* InitTrie();											//åˆå§‹åŒ–æ ‘ï¼ŒæˆåŠŸè¿”å›åœ°å€ï¼Œå¤±è´¥è¿”å›NULL
+int SetTrieKeyVal(STRIE* trie,char* key,void* val);			//è®¾ç½®é”®-å€¼ï¼ŒæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0ï¼Œå¯ä»¥ç”¨æ­¤æ¥å£åˆ›å»ºé”®-å€¼å’Œæ›´æ”¹å·²æœ‰é”®-å€¼
+int DelTrieKeyVal(STRIE* trie,char* key);					//åˆ é™¤é”®-å€¼ï¼ŒæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0
+void* GetTrieKeyVal(STRIE* trie,char* key);					//æ ¹æ®é”®è·å¾—è·å¾—å€¼ï¼ŒæˆåŠŸè¿”å›å€¼ï¼Œå¤±è´¥è¿”å›NULLï¼Œ
+//è¿”å›NULLæ—¶ä¸æ’é™¤æ•°æ®åŸŸçš„æŒ‡é’ˆæœ¬æ¥å°±ç­‰äºNULLï¼Œ
+//éœ€é…åˆTrieExistKeyVal()æ¥å£åˆ¤æ–­
+int TrieExistKeyVal(STRIE* trie,char* key);					//é”®-å€¼æ˜¯å¦å­˜åœ¨ï¼Œå­˜åœ¨åˆ™è¿”å›1ï¼Œä¸å­˜åœ¨åˆ™è¿”å›0
+int ClearTrie(STRIE* trie);									//æ¸…ç©ºæ‰€æœ‰é”®-å€¼ï¼ŒæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0
+int DestroyTrie(STRIE* trie);								//é”€æ¯æ ‘ï¼ŒæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0
+int TrieEmpty(STRIE* trie);									//æ ‘æ˜¯å¦ä¸ºç©ºï¼Œæ˜¯åˆ™è¿”å›1ï¼Œå¦åˆ™è¿”å›0ï¼Œé”™è¯¯è¿”å›-1
+int TrieTraverse(STRIE* trie,TRIE_VISIT visit);				//å¯¹æ ‘ä¸­æ‰€æœ‰å…ƒç´ ä¾æ¬¡è°ƒç”¨visitå‡½æ•°
+//è¦æ±‚visitå‡½æ•°å‚æ•°ä¸ºæ•°æ®ï¼Œvisitè¿”å›1ä»£è¡¨å¤„ç†æˆåŠŸï¼Œå¹¶å¼€å§‹å¤„ç†ä¸‹ä¸€ä¸ªå…ƒç´ 
+//è¿”å›0ä»£è¡¨å¤„ç†å¤±è´¥ï¼ŒStackTraverseåˆ™ç»ˆæ­¢å¤„ç†å¹¶é€€å‡º
+//è¿”å›æˆåŠŸå¤„ç†çš„å…ƒç´ ä¸ªæ•°
 STRIE* InitTrie()
 {
 	STRIE* result = (STRIE*)calloc(1,sizeof(STRIE));
 //	if(result==NULL){
-//		return NULL;										//¹ÊÒâ×¢ÊÍ¸øÄã¿´£¬×ĞÏ¸Àí½âÒ»ÏÂÎªÊ²Ã´
+//		return NULL;										//æ•…æ„æ³¨é‡Šç»™ä½ çœ‹ï¼Œä»”ç»†ç†è§£ä¸€ä¸‹ä¸ºä»€ä¹ˆ
 //	}
-	return result;											//·´ÕıÈç¹û³ö´íÒ²µÃ·µ»ØNULL£¬¸É´àÖ±½Ó·µ»Ø
+	return result;											//åæ­£å¦‚æœå‡ºé”™ä¹Ÿå¾—è¿”å›NULLï¼Œå¹²è„†ç›´æ¥è¿”å›
 }
 
 int SetTrieKeyVal(STRIE* trie,char* key,void* val)
@@ -53,7 +55,7 @@ int SetTrieKeyVal(STRIE* trie,char* key,void* val)
 		if(trie->child[key[i]]==NULL) {
 			trie->child[key[i]] = InitTrie();
 			if(trie->child[key[i]]==NULL) {
-				//Èç¹ûÄÚ´æ·ÖÅä»¹ÊÇÓĞÎÊÌâ
+				//å¦‚æœå†…å­˜åˆ†é…è¿˜æ˜¯æœ‰é—®é¢˜
 				return 0;
 			}
 		}
@@ -94,7 +96,7 @@ int DelTrieKeyVal(STRIE* trie,char* key)
 		int flag = 0;
 		for(i=0; i<128; i++) {
 			if((tmp->child[i]!=NULL)||(tmp->isexist==1)) {
-				//Èç¹û×Ó½ÚµãÓĞ¼ü-Öµ»ò±¾½ÚµãÒÑ¾­ÓĞ´æÊı¾İµÄ»°
+				//å¦‚æœå­èŠ‚ç‚¹æœ‰é”®-å€¼æˆ–æœ¬èŠ‚ç‚¹å·²ç»æœ‰å­˜æ•°æ®çš„è¯
 				flag = 1;
 			}
 		}

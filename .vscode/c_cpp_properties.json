@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/include/stdc++_implemented/",
+                "${workspaceFolder}/src/**"
+            ],
+            "defines": [],
+            "compilerPath": "D:/TDM-GCC10/bin/g++.exe",
+            "compilerArgs": [
+                "-lm",
+                "-O2"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

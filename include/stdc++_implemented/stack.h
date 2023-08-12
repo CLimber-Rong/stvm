@@ -1,43 +1,43 @@
 /*
 	Name: stack.h
 	Copyright: Apache License 2.0
-	Author: öÄÏàÈÙ
+	Author: ç¿ç›¸è£
 	Date: 23/10/22 21:44
-	Description: CÓïÑÔÕ»¿â£¬°æ±¾1.0.0.0
+	Description: Cè¯­è¨€æ ˆåº“ï¼Œç‰ˆæœ¬1.0.0.0
 */
 
 
 #ifndef STACK_H
 #define STACK_H
 
-#include"lib.h"
+#include"stdlib.h"
 
-typedef int (*STACK_VISIT)(void*);					//±éÀúµÄº¯ÊıÖ¸Õë½Ó¿Ú
+typedef int (*STACK_VISIT)(void*);					//éå†çš„å‡½æ•°æŒ‡é’ˆæ¥å£
 
-typedef struct _STACK_ELEMENT_TYPE {					//Õ»µÄÔªËØ£¬²ÉÓÃË«ÏòÁ´±íÊ½½á¹¹
-	void* data;									//Êı¾İÓò
-	struct _STACK_ELEMENT_TYPE* next;			//ÏÂÒ»¸ö
-	struct _STACK_ELEMENT_TYPE* prev;			//ÉÏÒ»¸ö
+typedef struct _STACK_ELEMENT_TYPE {					//æ ˆçš„å…ƒç´ ï¼Œé‡‡ç”¨åŒå‘é“¾è¡¨å¼ç»“æ„
+	void* data;									//æ•°æ®åŸŸ
+	struct _STACK_ELEMENT_TYPE* next;			//ä¸‹ä¸€ä¸ª
+	struct _STACK_ELEMENT_TYPE* prev;			//ä¸Šä¸€ä¸ª
 } stack_node;
 
 typedef struct {
-	stack_node* top;								//Õ»¶¥
-	stack_node* base;								//Õ»µ×
-	int length;										//³¤¶È
+	stack_node* top;								//æ ˆé¡¶
+	stack_node* base;								//æ ˆåº•
+	int length;										//é•¿åº¦
 } STACK;
 
-STACK* InitStack();									//³õÊ¼»¯Ò»¸öÕ»£¬³É¹¦·µ»ØÕ»Ö¸Õë£¬·ñÔò·µ»ØNULL
-int ClearStack(STACK* stack);						//Çå¿ÕÒ»¸öÕ»£¬³É¹¦·µ»Ø1£¬·ñÔò·µ»Ø0
-int DestroyStack(STACK* stack);						//Ïú»ÙÒ»¸öÕ»£¬³É¹¦·µ»Ø1£¬·ñÔò·µ»Ø0
-int StackEmpty(STACK* stack);						//ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ£¬ÊÇÔò·µ»Ø1£¬·ñÔò·µ»Ø0£¬³ö´í·µ»Ø-1
-int StackLength(STACK* stack);						//·µ»ØÕ»µÄ³¤¶È£¬³ö´í·µ»Ø-1
-void* GetTop(STACK* stack);							//·µ»ØÕ»¶¥ÔªËØÊı¾İ£¬³ö´í·µ»ØNULL
-int PushStack(STACK* stack,void* data);				//ÈëÕ» £¬³É¹¦·µ»Ø1£¬·ñÔò·µ»Ø0
-void* PopStack(STACK* stack);						//³öÕ»²¢·µ»Ø³öÕ»µÄÊı¾İ£¬´íÎó·µ»ØNULL
-int StackTraverse(STACK* stack,STACK_VISIT visit);	//´ÓÕ»µ×µ½Õ»¶¥ÒÀ´Îµ÷ÓÃvisitº¯Êı
-//ÒªÇóvisitº¯Êı²ÎÊıÎªÊı¾İ£¬visit·µ»Ø1´ú±í´¦Àí³É¹¦£¬²¢¿ªÊ¼´¦ÀíÏÂÒ»¸öÔªËØ
-//·µ»Ø0´ú±í´¦ÀíÊ§°Ü£¬StackTraverseÔòÖÕÖ¹´¦Àí²¢ÍË³ö
-//·µ»Ø³É¹¦´¦ÀíµÄÔªËØ¸öÊı
+STACK* InitStack();									//åˆå§‹åŒ–ä¸€ä¸ªæ ˆï¼ŒæˆåŠŸè¿”å›æ ˆæŒ‡é’ˆï¼Œå¦åˆ™è¿”å›NULL
+int ClearStack(STACK* stack);						//æ¸…ç©ºä¸€ä¸ªæ ˆï¼ŒæˆåŠŸè¿”å›1ï¼Œå¦åˆ™è¿”å›0
+int DestroyStack(STACK* stack);						//é”€æ¯ä¸€ä¸ªæ ˆï¼ŒæˆåŠŸè¿”å›1ï¼Œå¦åˆ™è¿”å›0
+int StackEmpty(STACK* stack);						//åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©ºï¼Œæ˜¯åˆ™è¿”å›1ï¼Œå¦åˆ™è¿”å›0ï¼Œå‡ºé”™è¿”å›-1
+int StackLength(STACK* stack);						//è¿”å›æ ˆçš„é•¿åº¦ï¼Œå‡ºé”™è¿”å›-1
+void* GetTop(STACK* stack);							//è¿”å›æ ˆé¡¶å…ƒç´ æ•°æ®ï¼Œå‡ºé”™è¿”å›NULL
+int PushStack(STACK* stack,void* data);				//å…¥æ ˆ ï¼ŒæˆåŠŸè¿”å›1ï¼Œå¦åˆ™è¿”å›0
+void* PopStack(STACK* stack);						//å‡ºæ ˆå¹¶è¿”å›å‡ºæ ˆçš„æ•°æ®ï¼Œé”™è¯¯è¿”å›NULL
+int StackTraverse(STACK* stack,STACK_VISIT visit);	//ä»æ ˆåº•åˆ°æ ˆé¡¶ä¾æ¬¡è°ƒç”¨visitå‡½æ•°
+//è¦æ±‚visitå‡½æ•°å‚æ•°ä¸ºæ•°æ®ï¼Œvisitè¿”å›1ä»£è¡¨å¤„ç†æˆåŠŸï¼Œå¹¶å¼€å§‹å¤„ç†ä¸‹ä¸€ä¸ªå…ƒç´ 
+//è¿”å›0ä»£è¡¨å¤„ç†å¤±è´¥ï¼ŒStackTraverseåˆ™ç»ˆæ­¢å¤„ç†å¹¶é€€å‡º
+//è¿”å›æˆåŠŸå¤„ç†çš„å…ƒç´ ä¸ªæ•°
 
 STACK* InitStack() {
 	STACK* stack = (STACK*)calloc(1,sizeof(STACK));
