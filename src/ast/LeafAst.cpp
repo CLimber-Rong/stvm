@@ -123,6 +123,14 @@ namespace stamon {
 					return val;
 				}
 		};
+
+		class AstNull : public AstNode {
+			public:
+				virtual int getType() {
+					return AstNullType;
+				}
+		};
+
 		class AstBreak : public AstNode {
 			public:
 				AstBreak() : AstNode() {};

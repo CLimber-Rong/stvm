@@ -42,10 +42,10 @@ namespace stamon {
 		    AstBinaryType,
 		    AstUnaryType,
 		    AstPostfixType,
-		    AstQuarkType,
 		    AstIdentifierType,
 		    AstNumberType,
 		    AstStringType,
+			AstNullType,
 		    AstArrayLiteralType,
 		    AstListLiteralType,
 		    AstTypeNum // Ast总数
@@ -71,10 +71,10 @@ namespace stamon {
 		class AstBinary;
 		class AstUnary;
 		class AstPostfix;
-		class AstQuark;
 		class AstIdentifier;
 		class AstNumber;
 		class AstString;
+		class AstNull;
 		class AstArrayLiteral;
 		class AstListLiteral;
 
