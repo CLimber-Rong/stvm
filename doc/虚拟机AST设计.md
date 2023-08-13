@@ -65,7 +65,7 @@ for语句，多子节点IDENTIFIER，Expression，CompoundBlock
 双目运算符节点，双子节点Binary，Unary
 
 #####  Unary:
-单目运算符，多子节点Unary，Quark，Postfix
+单目运算符，多子节点Unary，IDENTIFIER，NUMBER，STRING，NULL，Postfix
 
 #####  Postfix:
 后缀运算符，单子结点Expression，IDENTIFIER
@@ -78,6 +78,9 @@ for语句，多子节点IDENTIFIER，Expression，CompoundBlock
 
 #####  STRING
 字符串字面量，无子节点
+
+####   NULL
+null字面量，无子结点
 
 #####  ArrayLiteral
 数组字面量，单子节点Expression
