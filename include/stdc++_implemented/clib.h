@@ -1,29 +1,19 @@
-////ÒÔÏÂ´úÂëÔİÇÒ²»ĞèÒª 
-//#ifndef CLIB_H
-//#define CLIB_H
-//
-//#include"stdio.h"
-//#include"stdlib.h"
-//
-////ĞèÒªÊµÏÖµÄº¯Êı 
-//void VM_Exit();				//ÍË³öĞéÄâ»ú³ÌĞò 
-//void VM_Debug(char* msg);	//Êä³öĞéÄâ»úµÄµ÷ÊÔĞÅÏ¢
-//
-//void VM_Exit()
-//{
-//	Exit();
-//	return;
-//}
-//
-//void VM_Debug(char* msg)
-//{
-//	printf(msg);
-//	return;
-//}
-//
-////ÒÔÏÂÊÇ·½±ã¿ª·¢ĞéÄâ»úËù¶¨ÒåµÄºê
-////ÊµÏÖ¼æÈİµÄ¿ª·¢ÕßÎŞĞèÀí»á
-//#define EXIT VM_Exit()
-//#define DEBUG(msg) VM_Debug(msg) 
-//
-//#endif
+/*
+	Name: clib.h
+	Copyright: Apache 2.0
+	Author: CLimber-Rong
+	Date: 12/08/23 23:24
+	Description: ä¸€äº›æ‚ç³…çš„åº“å®šä¹‰
+*/
+
+#ifndef CLIB_H
+#define CLIB_H
+
+/*ç”±äºä»£ç ç»å¸¸æ¶‰åŠåˆ°åŸºç±»è½¬æ´¾ç”Ÿç±»ï¼Œæ‰€ä»¥æˆ‘ç¼–å†™äº†è¿™ä¸ªå¯ä»¥ç›´æ¥è½¬æ¢çš„å®*/
+/*
+ * è¿™ä¸ªå®çš„ç”¨æ³•æ˜¯ï¼š
+ * dst = cast_class(è½¬æ¢åçš„ç±»å‹,éœ€è¦è½¬æ¢çš„å€¼)
+ */
+#define cast_class(T, value) (*(T*) (& (value) ))
+
+#endif
