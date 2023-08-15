@@ -9,6 +9,8 @@
 #ifndef EXPRAST_CPP
 #define EXPRAST_CPP
 
+#include"Ast.hpp"
+
 namespace stamon {
 	namespace ast {
 		enum _LeftPostfixType {

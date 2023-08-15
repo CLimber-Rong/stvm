@@ -10,8 +10,8 @@
         using namespace stamon::ast;
 */
 
-#ifndef AST_HEADER
-#define AST_HEADER
+#ifndef AST_HPP
+#define AST_HPP
 
 #include "ArrayList.hpp"
 #include "CodeLogicAst.cpp"
