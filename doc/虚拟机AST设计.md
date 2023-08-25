@@ -1,3 +1,10 @@
+<!--
+ * @Name: 
+ * @Copyright: 
+ * @Author: 
+ * @Date: 12/08/23 23:24
+ * @Description: 
+-->
 # Stamon2虚拟机语法树概述
 
 * 版本1.0.0.0
@@ -23,7 +30,7 @@ Stamon2的虚拟机为Stamon2乃至其他语言诞生。
 定义类的节点，双子节点IDENTIFIER，AnonClass
 
 #####  AnonClass
-匿名类的节点，每个对象都是表达式，多子节点IDENTIFIER，Expression
+匿名类的节点，每个对象都是表达式，多子节点Expression
 
 #####  AnonMethod
 匿名方法的节点，单子节点Block

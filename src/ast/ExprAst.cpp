@@ -49,49 +49,46 @@ namespace stamon {
 		class AstExpression : public AstNode {
 
 			public:
-				AstExpression(AstLeftValue LeftValue, AstExpression expr) : AstNode() {
+
+				AstExpression(AstLeftValue* LeftValue, AstExpression* expr) : AstNode() {
 					children->add(LeftValue);
 					children->add(expr);
 				}
-				AstExpression(AstBinary value) : AstNode() {
+				AstExpression(AstBinary* value) : AstNode() {
 					children->add(value);
 				}
 				virtual int getType() {
 					return AstExpressionType;
 				}
 		};
-
 		class AstLeftValue : public AstNode {
 
 			public:
-				AstLeftValue(AstIdentifier iden, ArrayList<AstNode> *postfix) : AstNode() {
+
+				AstLeftValue(AstIdentifier* iden, ArrayList<AstNode*>* postfix) : AstNode() {
 					children = postfix;
-					children->insert(0, iden);
+					children->insert(0,iden);
 				}
 				virtual int getType() {
 					return AstLeftValueType;
 				}
 		};
-
 		class AstLeftPostfix : public AstNode {
 				int postfix_type;
-
 			public:
 				int postfix_type;
-				AstLeftPostfix(int PostfixType, AstNode value) : AstNode() {
+				AstLeftPostfix(int PostfixType, AstNode* value) : AstNode() {
 					children->add(value);
 				}
 				virtual int getType() {
 					return AstLeftPostfixType;
 				}
 		};
-
 		class AstBinary : public AstNode {
 				int operator_type;
-
 			public:
 				int operator_type;
-				AstBinary(int OperatorType, AstNode left, AstNode right) : AstNode() {
+				AstBinary(int OperatorType, AstNode* left, AstNode* right) : AstNode() {
 					operator_type = OperatorType;
 					children->add(left);
 					children->add(right);
@@ -100,17 +97,15 @@ namespace stamon {
 					return AstBinaryType;
 				}
 		};
-
 		class AstUnary : public AstNode {
 				int operator_type;
-
 			public:
 				int operator_type;
-				AstUnary(int OperatorType, AstNode value) : AstNode() {
+				AstUnary(int OperatorType, AstNode* value) : AstNode() {
 					operator_type = OperatorType;
 					children->add(value);
 				}
-				AstUnary(AstNode value, ArrayList<AstNode> *postfix) : AstNode() {
+				AstUnary(AstNode* value, ArrayList<AstNode*>* postfix) : AstNode() {
 					children = postfix;
 					children->insert(0, value);
 				}
@@ -118,13 +113,11 @@ namespace stamon {
 					return AstUnaryType;
 				}
 		};
-
 		class AstPostfix : public AstNode {
 				int postfix_type;
-
 			public:
 				int postfix_type;
-				AstPostfix(int PostfixType, AstNode value) : AstNode() {
+				AstPostfix(int PostfixType, AstNode* value) : AstNode() {
 					postfix_type = PostfixType;
 					children->add(value);
 				}
@@ -132,22 +125,22 @@ namespace stamon {
 					return AstPostfixType;
 				}
 		};
-
 		class AstArrayLiteral : public AstNode {
 
 			public:
-				AstArrayLiteral(AstExpression expr) : AstNode() {
+
+				AstArrayLiteral(AstExpression* expr) : AstNode() {
 					children->add(expr);
 				}
 				virtual int getType() {
 					return AstArrayLiteralType;
 				}
 		};
-
 		class AstListLiteral : public AstNode {
 
 			public:
-				AstListLiteral(ArrayList<AstNode> *exprs) : AstNode() {
+
+				AstListLiteral(ArrayList<AstNode*>* exprs) : AstNode() {
 					children = exprs;
 				}
 				virtual int getType() {

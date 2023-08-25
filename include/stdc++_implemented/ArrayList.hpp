@@ -15,7 +15,7 @@ using namespace std;
 
 template <typename T>
 class ArrayList {
-		vector<typename T>* list;
+		vector<T>* list;
 	public:
 		ArrayList();			//创建一个空列表
 		ArrayList(int size);	//创建size个元素的列表

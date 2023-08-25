@@ -12,15 +12,15 @@
 #include"strie.h"
 #include"String.hpp"
 
-template <typename ValueType>
+template <typename T>
 class StringMap
 {
 		STRIE* map;
 	public:
 		StringMap();							//构造方法
-		int put(String s, ValueType* data); 			//设置键值
-		int del(String s, ValueType* data);			//删除键值
-		ValueType* get(String s);					//获取值
+		int put(String s, T* data); 			//设置键值
+		int del(String s, T* data);			//删除键值
+		T* get(String s);					//获取值
 		bool containsKey(String s);				//是否存在该键
 		int clear();							//清空
 		int destroy();							//销毁
@@ -28,56 +28,56 @@ class StringMap
 		int traverse(TRIE_VISIT visit);			//遍历
 };
 
-template <typename ValueType>
-StringMap<ValueType>::StringMap()
+template <typename T>
+StringMap<T>::StringMap()
 {
 	map = InitTrie();
 }
 
-template <typename ValueType>
-int StringMap<ValueType>::put(String s, ValueType* data)
+template <typename T>
+int StringMap<T>::put(String s, T* data)
 {
-	return SetTrieKeyVal(map, s.c_arr(), (void*)data);
+	return SetTrieKeyVal(map, s.c_arr(), s.length(), (void*)data);
 }
 
-template <typename ValueType>
-int StringMap<ValueType>::del(String s, ValueType* data)
+template <typename T>
+int StringMap<T>::del(String s, T* data)
 {
-	return DelTrieKeyVal(map, s.c_arr(), (void*)data);
+	return DelTrieKeyVal(map, s.c_arr(), s.length(), (void*)data);
 }
 
-template <typename ValueType>
-ValueType* StringMap<ValueType>::get(String s)
+template <typename T>
+T* StringMap<T>::get(String s)
 {
-	return (ValueType*)GetTrieKeyVal(map, s.c_arr());
+	return (T*)GetTrieKeyVal(map, s.c_arr(), s.length());
 }
 
-template <typename ValueType>
-bool StringMap<ValueType>::containsKey(String s)
+template <typename T>
+bool StringMap<T>::containsKey(String s)
 {
-	return TrieExistKeyVal(s.c_arr());
+	return TrieExistKeyVal(s.c_arr(), s.length());
 }
 
-template <typename ValueType>
-int StringMap<ValueType>::clear()
+template <typename T>
+int StringMap<T>::clear()
 {
 	return ClearTrie(map);
 }
 
-template <typename ValueType>
-int StringMap<ValueType>::destroy()
+template <typename T>
+int StringMap<T>::destroy()
 {
 	return DestroyTrie(map);
 }
 
-template <typename ValueType>
+template <typename T>
 bool empty()
 {
 	return TrieEmpty(map);
 }
 
-template <typename ValueType>
-int StringMap<ValueType>::traverse(TRIE_VISIT visit)
+template <typename T>
+int StringMap<T>::traverse(TRIE_VISIT visit)
 {
 	return TrieTraverse(map, visit);
 }

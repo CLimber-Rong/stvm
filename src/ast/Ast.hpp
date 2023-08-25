@@ -80,18 +80,18 @@ namespace stamon {
 
 		class AstNode {
 			protected:
-				ArrayList<AstNode> *children;
+				ArrayList<AstNode*>* children;
 
 			public:
 				AstNode() {
 					//构造函数
-					children = new ArrayList<AstNode>();
+					children = new ArrayList<AstNode*>();
 				}
 				virtual int ChildrenNum() {
 					//子节点数量
 					return children->size();
 				}
-				virtual ArrayList<AstNode> *Children() {
+				virtual ArrayList<AstNode*> *Children() {
 					//获得子节点列表
 					return children;
 				}

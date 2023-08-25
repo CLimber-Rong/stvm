@@ -10,7 +10,7 @@
 
 #include"stack.h"
 
-template <typename ValueType>
+template <typename T>
 class Stack {
 	STACK* stack;
 	public:
@@ -19,53 +19,62 @@ class Stack {
 		int destroy();							//销毁
 		int empty();							//是否为空
 		int size();								//元素个数
-		ValueType* peek();							//获取栈顶元素
-		int push(ValueType* data); 					//入栈
-		ValueType* pop();							//出栈
+		T* peek();							//获取栈顶元素
+		int push(T* data); 					//入栈
+		T* pop();							//出栈
 		int traverse(STACK_VISIT visit); 		//从栈底到栈顶依次遍历，具体操作见stack.h 
 };
 
-Stack::Stack()
+template <typename T>
+Stack<T>::Stack()
 {
 	stack = InitStack();
 }
 
-int Stack::clear()
+template <typename T>
+int Stack<T>::clear()
 {
 	return ClearStack(stack);
 }
 
-int Stack::destroy()
+template <typename T>
+int Stack<T>::destroy()
 {
 	return DestroyStack(stack);
 }
 
-int Stack::empty()
+template <typename T>
+int Stack<T>::empty()
 {
 	return StackEmpty(stack);
 }
 
-int Stack::size()
+template <typename T>
+int Stack<T>::size()
 {
 	return StackLength(stack);
 }
 
-ValueType* Stack::peek()
+template <typename T>
+T* Stack<T>::peek()
 {
-	return (ValueType*)GetTop(stack);
+	return (T*)GetTop(stack);
 }
 
-int Stack::push(ValueType* data)
+template <typename T>
+int Stack<T>::push(T* data)
 {
 	return PushStack(stack,(void*)data);
 }
 
-ValueType* Stack::pop()
+template <typename T>
+T* Stack<T>::pop()
 {
-	return (ValueType*)PopStack(stack,data);
+	return (T*)PopStack(stack,data);
 }
 
-int Stack::traverse(STACK_VISIT visit)
+template <typename T>
+int Stack<T>::traverse(STACK_VISIT visit)
 {
 	return StackTraverse(stack,visit);
 }
