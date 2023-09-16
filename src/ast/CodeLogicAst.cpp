@@ -29,8 +29,8 @@ namespace stamon {
 			public:
 
 				AstDefClass(AstIdentifier* iden, AstAnonClass* object_class) : AstNode() {
-					children->add(iden);
-					children->add(object_class);
+					children->add((AstNode*)iden);
+					children->add((AstNode*)object_class);
 				}
 				virtual int getType() {
 					return AstDefClassType;
@@ -52,7 +52,7 @@ namespace stamon {
 			public:
 
 				AstAnonMethod(AstBlock* block) : AstNode() {
-					children->add(block);
+					children->add((AstNode*)block);
 				}
 				virtual int getType() {
 					return AstAnonMethodType;
@@ -85,13 +85,13 @@ namespace stamon {
 			public:
 
 				AstIfStatement(AstExpression* expr, AstCompoundBlock* block_if) : AstNode() {
-					children->add(expr);
-					children->add(block_if);
+					children->add((AstNode*)expr);
+					children->add((AstNode*)block_if);
 				}
 				AstIfStatement(AstExpression* expr, AstCompoundBlock* block_if, AstCompoundBlock* block_else) : AstNode() {
-					children->add(expr);
-					children->add(block_if);
-					children->add(block_else);
+					children->add((AstNode*)expr);
+					children->add((AstNode*)block_if);
+					children->add((AstNode*)block_else);
 				}
 				virtual int getType() {
 					return AstIfStatementType;
@@ -102,8 +102,8 @@ namespace stamon {
 			public:
 
 				AstWhileStatement(AstExpression* expr, AstCompoundBlock* block_while) : AstNode() {
-					children->add(expr);
-					children->add(block_while);
+					children->add((AstNode*)expr);
+					children->add((AstNode*)block_while);
 				}
 				virtual int getType() {
 					return AstWhileStatementType;
@@ -114,9 +114,9 @@ namespace stamon {
 			public:
 
 				AstForStatement(AstIdentifier* iden, AstExpression* expr, AstCompoundBlock* block_for) : AstNode() {
-					children->add(iden);
-					children->add(expr);
-					children->add(block_for);
+					children->add((AstNode*)iden);
+					children->add((AstNode*)expr);
+					children->add((AstNode*)block_for);
 				}
 				virtual int getType() {
 					return AstForStatementType;
@@ -127,7 +127,7 @@ namespace stamon {
 			public:
 
 				AstReturnStatement(AstExpression* expr) : AstNode() {
-					children->add(expr);
+					children->add((AstNode*)expr);
 				}
 				virtual int getType() {
 					return AstReturnStatementType;

@@ -74,7 +74,7 @@ def MakeCode() -> str:
         
         public_members = ''     # public_members是默认没有的
         if 'public_members' in cls:
-            public_members = cls['private_members']
+            public_members = cls['public_members']
         
         structures = cls['structure']
         

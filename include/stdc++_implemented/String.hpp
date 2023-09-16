@@ -85,6 +85,13 @@ char String::at(int index)
 	return str.at(index);
 }
 
+void String::c_arr(char* s) {
+	for(int i=0;i<str.size();i++) {
+		s[i] = str[i];
+	}
+	return;
+}
+
 bool String::match_head(String s)
 {
 	//用于匹配s
@@ -101,6 +108,10 @@ bool String::match_head(String s)
 		}
 	}
 	return true;
+}
+
+string String::getstring() {
+	return str;
 }
 
 #endif

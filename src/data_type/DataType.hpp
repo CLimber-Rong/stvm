@@ -13,13 +13,6 @@
 #ifndef DATATYPE_HPP
 #define DATATYPE_HPP
 
-#include"NullType.cpp"
-#include"NumberType.cpp"
-#include"StringType.cpp"
-#include"SequenceType.cpp"
-#include"ClassType.cpp"
-#include"MethodType.cpp"
-
 namespace stamon {
 	namespace datatype {
 		enum _DataTypeID {
@@ -60,5 +53,12 @@ namespace stamon {
 		};
 	}
 }
+
+#include"NullType.cpp"
+#include"NumberType.cpp"
+#include"StringType.cpp"
+#include"SequenceType.cpp"
+#include"ClassType.cpp"
+#include"MethodType.cpp"
 
 #endif

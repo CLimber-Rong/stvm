@@ -26,7 +26,6 @@ class ArrayList {
 		bool empty();	//判断是否为空
 		void clear();	//清楚列表
 		int size();	//获得元素个数
-		~ArrayList();	//析构函数
 };
 
 template <typename T>
@@ -46,7 +45,7 @@ void ArrayList<T>::add(T value) {
 
 template <typename T>
 void ArrayList<T>::insert(int index, T value) {
-	list->insert(index, value);
+	list->insert(list->begin()+index, value);
 }
 
 template <typename T>

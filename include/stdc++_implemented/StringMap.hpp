@@ -13,8 +13,7 @@
 #include"String.hpp"
 
 template <typename T>
-class StringMap
-{
+class StringMap {
 		STRIE* map;
 	public:
 		StringMap();							//构造方法
@@ -29,56 +28,55 @@ class StringMap
 };
 
 template <typename T>
-StringMap<T>::StringMap()
-{
+StringMap<T>::StringMap() {
 	map = InitTrie();
 }
 
 template <typename T>
-int StringMap<T>::put(String s, T* data)
-{
-	return SetTrieKeyVal(map, s.c_arr(), s.length(), (void*)data);
+int StringMap<T>::put(String s, T* data) {
+	char* tmp = (char*)calloc(s.length(), sizeof(char));
+	s.c_arr(tmp);
+	return SetTrieKeyVal(map, (unsigned char*)tmp, s.length(), (void*)data);
 }
 
 template <typename T>
-int StringMap<T>::del(String s, T* data)
-{
-	return DelTrieKeyVal(map, s.c_arr(), s.length(), (void*)data);
+int StringMap<T>::del(String s, T* data) {
+	char* tmp = (char*)calloc(s.length(), sizeof(char));
+	s.c_arr(tmp);
+	return DelTrieKeyVal(map, (unsigned char*)tmp, s.length());
 }
 
 template <typename T>
-T* StringMap<T>::get(String s)
-{
-	return (T*)GetTrieKeyVal(map, s.c_arr(), s.length());
+T* StringMap<T>::get(String s) {
+	char* tmp = (char*)calloc(s.length(), sizeof(char));
+	s.c_arr(tmp);
+	return (T*)GetTrieKeyVal(map, (unsigned char*)tmp, s.length());
 }
 
 template <typename T>
-bool StringMap<T>::containsKey(String s)
-{
-	return TrieExistKeyVal(s.c_arr(), s.length());
+bool StringMap<T>::containsKey(String s) {
+	char* tmp = (char*)calloc(s.length(), sizeof(char));
+	s.c_arr(tmp);
+	return TrieExistKeyVal(map, (unsigned char*)tmp, s.length());
 }
 
 template <typename T>
-int StringMap<T>::clear()
-{
+int StringMap<T>::clear() {
 	return ClearTrie(map);
 }
 
 template <typename T>
-int StringMap<T>::destroy()
-{
+int StringMap<T>::destroy() {
 	return DestroyTrie(map);
 }
 
 template <typename T>
-bool empty()
-{
+bool StringMap<T>::empty() {
 	return TrieEmpty(map);
 }
 
 template <typename T>
-int StringMap<T>::traverse(TRIE_VISIT visit)
-{
+int StringMap<T>::traverse(TRIE_VISIT visit) {
 	return TrieTraverse(map, visit);
 }
 

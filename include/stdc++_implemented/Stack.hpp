@@ -70,7 +70,7 @@ int Stack<T>::push(T* data)
 template <typename T>
 T* Stack<T>::pop()
 {
-	return (T*)PopStack(stack,data);
+	return (T*)PopStack(stack);
 }
 
 template <typename T>

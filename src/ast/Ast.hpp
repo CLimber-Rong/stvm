@@ -14,10 +14,6 @@
 #define AST_HPP
 
 #include "ArrayList.hpp"
-#include "CodeLogicAst.cpp"
-#include "ExprAst.cpp"
-#include "LeafAst.cpp"
-#include "SfnAst.cpp"
 
 namespace stamon {
 	namespace ast {
@@ -45,7 +41,7 @@ namespace stamon {
 		    AstIdentifierType,
 		    AstNumberType,
 		    AstStringType,
-			AstNullType,
+		    AstNullType,
 		    AstArrayLiteralType,
 		    AstListLiteralType,
 		    AstTypeNum // Ast总数
@@ -102,5 +98,10 @@ namespace stamon {
 		};
 	}
 }
+
+#include "CodeLogicAst.cpp"
+#include "ExprAst.cpp"
+#include "LeafAst.cpp"
+#include "SfnAst.cpp"
 
 #endif

@@ -29,14 +29,14 @@ class NumberMap {
 		int put(int s, T* data) { 			//设置键值
 			return SetTrieKeyVal(map, (unsigned char*)&s, sizeof(int), (void*)data);
 		}
-		int del(int s, T* data) {			//删除键值
-			return DelTrieKeyVal(map, (unsigned char*)&s, sizeof(int), (void*)data);
+		int del(int s) {			//删除键值
+			return DelTrieKeyVal(map, (unsigned char*)&s, sizeof(int));
 		}
 		T* get(int s) {					//获取值
 			return (T*)GetTrieKeyVal(map, (unsigned char*)&s, sizeof(int));
 		}
 		bool containsKey(int s) {				//是否存在该键
-			return TrieExistKeyVal((unsigned char*)&s, sizeof(int));
+			return TrieExistKeyVal(map, (unsigned char*)&s, sizeof(int));
 		}
 		int clear() {							//清空
 			return ClearTrie(map);

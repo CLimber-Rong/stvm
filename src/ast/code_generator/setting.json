@@ -14,7 +14,7 @@
       "structure": [
         {
           "args": "AstIdentifier* iden, AstAnonClass* object_class",
-          "code": "children->add(iden);children->add(object_class);"
+          "code": "children->add((AstNode*)iden);children->add((AstNode*)object_class);"
         }
       ]
     },
@@ -32,7 +32,7 @@
       "structure": [
         {
           "args": "AstBlock* block",
-          "code": "children->add(block);"
+          "code": "children->add((AstNode*)block);"
         }
       ]
     },
@@ -59,11 +59,11 @@
       "structure": [
         {
           "args": "AstExpression* expr, AstCompoundBlock* block_if",
-          "code": "children->add(expr);children->add(block_if);"
+          "code": "children->add((AstNode*)expr);children->add((AstNode*)block_if);"
         },
         {
           "args": "AstExpression* expr, AstCompoundBlock* block_if, AstCompoundBlock* block_else",
-          "code": "children->add(expr);children->add(block_if);children->add(block_else);"
+          "code": "children->add((AstNode*)expr);children->add((AstNode*)block_if);children->add((AstNode*)block_else);"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "structure": [
         {
           "args": "AstExpression* expr, AstCompoundBlock* block_while",
-          "code": "children->add(expr);children->add(block_while);"
+          "code": "children->add((AstNode*)expr);children->add((AstNode*)block_while);"
         }
       ]
     },
@@ -81,7 +81,7 @@
       "structure": [
         {
           "args": "AstIdentifier* iden, AstExpression* expr, AstCompoundBlock* block_for",
-          "code": "children->add(iden);children->add(expr);children->add(block_for);"
+          "code": "children->add((AstNode*)iden);children->add((AstNode*)expr);children->add((AstNode*)block_for);"
         }
       ]
     },
@@ -90,7 +90,7 @@
       "structure": [
         {
           "args": "AstExpression* expr",
-          "code": "children->add(expr);"
+          "code": "children->add((AstNode*)expr);"
         }
       ]
     },
@@ -99,11 +99,11 @@
       "structure": [
         {
           "args": "AstLeftValue* LeftValue, AstExpression* expr",
-          "code": "children->add(LeftValue);children->add(expr);"
+          "code": "children->add((AstNode*)LeftValue);children->add((AstNode*)expr);"
         },
         {
           "args": "AstBinary* value",
-          "code": "children->add(value);"
+          "code": "children->add((AstNode*)value);"
         }
       ]
     },
@@ -112,7 +112,7 @@
       "structure": [
         {
           "args": "AstIdentifier* iden, ArrayList<AstNode*>* postfix",
-          "code": "children = postfix;children->insert(0,iden);"
+          "code": "children = postfix;children->insert(0,(AstNode*)iden);"
         }
       ]
     },
@@ -123,7 +123,7 @@
       "structure": [
         {
           "args": "int PostfixType, AstNode* value",
-          "code": "children->add(value);"
+          "code": "children->add((AstNode*)value);"
         }
       ]
     },
@@ -134,7 +134,7 @@
       "structure": [
         {
           "args": "int OperatorType, AstNode* left, AstNode* right",
-          "code": "operator_type = OperatorType;children->add(left);children->add(right);"
+          "code": "operator_type = OperatorType;children->add((AstNode*)left);children->add((AstNode*)right);"
         }
       ]
     },
@@ -145,11 +145,11 @@
       "structure": [
         {
           "args": "int OperatorType, AstNode* value",
-          "code": "operator_type = OperatorType;children->add(value);"
+          "code": "operator_type = OperatorType;children->add((AstNode*)value);"
         },
         {
           "args": "AstNode* value, ArrayList<AstNode*>* postfix",
-          "code": "children = postfix;children->insert(0, value);"
+          "code": "children = postfix;children->insert(0, (AstNode*)value);"
         }
       ]
     },
@@ -160,7 +160,7 @@
       "structure": [
         {
           "args": "int PostfixType, AstNode* value",
-          "code": "postfix_type = PostfixType;children->add(value);"
+          "code": "postfix_type = PostfixType;children->add((AstNode*)value);"
         }
       ]
     },
@@ -169,7 +169,7 @@
       "structure": [
         {
           "args": "AstExpression* expr",
-          "code": "children->add(expr);"
+          "code": "children->add((AstNode*)expr);"
         }
       ]
     },
