@@ -29,6 +29,7 @@ namespace stamon {
 		};
 
 		class DataType;
+		class Variable;
 		class NullType;
 		class IntegerType;
 		class FloatType;
@@ -54,11 +55,13 @@ namespace stamon {
 	}
 }
 
+#include"Variable.cpp"
 #include"NullType.cpp"
 #include"NumberType.cpp"
 #include"StringType.cpp"
 #include"SequenceType.cpp"
 #include"ClassType.cpp"
 #include"MethodType.cpp"
+#include"ObjectType.cpp"
 
 #endif

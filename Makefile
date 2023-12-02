@@ -15,6 +15,7 @@ build: clean
 	-I include/stdc++_implemented \
 	-I src/ast \
 	-I src/data_type \
+	-I src/vm \
 	-lm
 
 zip: stvm_test.exe

@@ -9,7 +9,9 @@
 #ifndef NUMBERMAP_HPP
 #define NUMBERMAP_HPP
 
+#include"stmlib.hpp"
 #include"strie.h"
+#include"ArrayList.hpp"
 /*
  * 简单讲一下原理
  * NumberMap基于StringMap实现
@@ -47,9 +49,39 @@ class NumberMap {
 		bool empty() {							//是否为空
 			return TrieEmpty(map);
 		}
-		int traverse(TRIE_VISIT visit) {			//遍历
-			return TrieTraverse(map, visit);
+
+		STRIE* getStrie() {
+			return map;
 		}
+
+		template<typename list_T>
+		ArrayList<list_T> getValList() {
+			ArrayList<list_T> result;
+
+			/*将所有值汇总成一个指定类型的列表*/
+
+			STACK* stack = InitStack();
+
+			PushStack(stack, map);
+			int i=0;
+			while(StackEmpty(stack)==0) {
+				map = (STRIE*)PopStack(stack);
+				if(map!=NULL) {
+					int j;
+					for(j=0; j<256; j++) {
+						PushStack(stack, map->child[j]);
+					}
+					if(map->isexist==1) {
+						result.add(cast_class(list_T, map->data));
+					}
+				}
+				i++;
+			}
+			DestroyStack(stack);
+
+			return result;
+		}
+
 };
 
 #endif

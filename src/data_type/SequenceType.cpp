@@ -20,14 +20,14 @@
 namespace stamon {
 	namespace datatype {
 		class SequenceType : public DataType {
-				ArrayList<DataType*> sequence;
+				ArrayList<Variable*> sequence;
 			public:
-				SequenceType(int length) : DataType(SequenceTypeID), sequence(ArrayList<DataType*>(length)) {
+				SequenceType(int length) : DataType(SequenceTypeID), sequence(ArrayList<Variable*>(length)) {
 				}
-				SequenceType(ArrayList<DataType*> value) : DataType(SequenceTypeID) {
+				SequenceType(ArrayList<Variable*> value) : DataType(SequenceTypeID) {
 					sequence = value;
 				}
-				virtual ArrayList<DataType*> getVal() {
+				virtual ArrayList<Variable*> getVal() {
 					return sequence;
 				}
 		};

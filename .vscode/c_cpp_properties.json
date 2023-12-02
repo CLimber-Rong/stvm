@@ -4,7 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/include/stdc++_implemented/",
-                "${workspaceFolder}/src/**"
+                "${workspaceFolder}/src/ast/",
+                "${workspaceFolder}/src/data_type/",
+                "${workspaceFolder}/src/vm/"
             ],
             "defines": [],
             "compilerPath": "D:/TDM-GCC10/bin/g++.exe",

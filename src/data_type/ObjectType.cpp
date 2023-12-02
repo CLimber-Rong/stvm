@@ -17,13 +17,13 @@
 namespace stamon {
 	namespace datatype {
 		class ObjectType : public DataType {
-				NumberMap<DataType*> vals;  //由于STVM内部以数字来代替标识符，所以采用NumberMap
+				NumberMap<Variable> vals;  //由于STVM内部以数字来代替标识符，所以采用NumberMap
 			public:
-				ObjectType(NumberMap<DataType*> value)
-					: DataType(ObjectTypeID), vals(NumberMap<DataType*>()) {
+				ObjectType(NumberMap<Variable> value)
+					: DataType(ObjectTypeID), vals(NumberMap<Variable>()) {
 					vals = value;
 				}
-				virtual NumberMap<DataType*> getVal() {
+				virtual NumberMap<Variable> getVal() {
 					return vals;
 				}
 		};

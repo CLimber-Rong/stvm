@@ -1,10 +1,17 @@
+/*
+	Name: 
+	Copyright: 
+	Author: 
+	Date: 24/08/23 18:09
+	Description: 
+*/
 #ifndef EXCEPTION
 #define EXCEPTION
 
-#include"String.hpp"
+#include"stmlib.hpp"
 //异常处理的实现
 
-String ExceptionMessage;
+char* ExceptionMessage;
 
 /*
 	CATCH的使用方法：
@@ -15,8 +22,8 @@ String ExceptionMessage;
 	ERROR是异常信息
 */ 
 
-#define THROW(message) ExceptionMessage = message;	//THROW当中的message是char*
-#define CATCH if(!ExceptionMessage.equals(String("")))
+#define THROW(message) ExceptionMessage = (char*)message;	//THROW当中的message是char*
+#define CATCH if(ExceptionMessage!=NULL)
 #define ERROR ExceptionMessage
 
 #endif

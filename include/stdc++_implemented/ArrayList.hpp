@@ -26,6 +26,7 @@ class ArrayList {
 		bool empty();	//判断是否为空
 		void clear();	//清楚列表
 		int size();	//获得元素个数
+		void set(int index, T value);
 };
 
 template <typename T>
@@ -50,7 +51,7 @@ void ArrayList<T>::insert(int index, T value) {
 
 template <typename T>
 void ArrayList<T>::erase(int index) {
-	list->erase(index);
+	list->erase(list->begin()+index);
 }
 
 template <typename T>
@@ -71,6 +72,11 @@ void ArrayList<T>::clear() {
 template <typename T>
 int ArrayList<T>::size() {
 	return list->size();
+}
+
+template <typename T>
+void ArrayList<T>::set(int index, T value) {
+	(*list)[index] = value;
 }
 
 #endif

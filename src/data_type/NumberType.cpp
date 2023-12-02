@@ -10,7 +10,7 @@
 #define NUMBERTYPE_CPP
 
 #include"DataType.hpp"
-#include"clib.h"
+#include"stmlib.hpp"
 
 namespace stamon {
 	namespace datatype {

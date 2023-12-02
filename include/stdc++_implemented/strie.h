@@ -103,7 +103,7 @@ int DelTrieKeyVal(STRIE* trie, unsigned char* key, int key_size) {
 	while(StackEmpty(stack)==0) {
 		STRIE* tmp = (STRIE*)GetTop(stack);
 		int flag = 0;
-		for(i=0; i<128; i++) {
+		for(i=0; i<256; i++) {
 			if((tmp->child[i]!=NULL)||(tmp->isexist==1)) {
 				//如果子节点有键-值或本节点已经有存数据的话
 				flag = 1;
@@ -164,7 +164,7 @@ int ClearTrie(STRIE* trie) {
 		STRIE** tmp2 = tmp->child;
 		if(tmp!=NULL) {
 			if(tmp!=trie)	free(tmp);
-			for(int i=0; i<128; i++) {
+			for(int i=0; i<256; i++) {
 				PushStack(stack, tmp2[i]);
 			}
 		}
@@ -187,12 +187,12 @@ int TrieEmpty(STRIE* trie) {
 	if(trie==NULL) {
 		return -1;
 	}
-	for(i=0; i<128; i++) {
+	for(i=0; i<256; i++) {
 		if(trie->child[i]!=NULL) {
 			break;
 		}
 	}
-	if(i!=128) {
+	if(i!=256) {
 		return 0;
 	}
 	return 1;
@@ -210,7 +210,7 @@ int TrieTraverse(STRIE* trie, TRIE_VISIT visit) {
 		trie = (STRIE*)PopStack(stack);
 		if(trie!=NULL) {
 			int j;
-			for(j=0; j<128; j++) {
+			for(j=0; j<256; j++) {
 				PushStack(stack, trie->child[j]);
 			}
 			if(trie->isexist==1) {
