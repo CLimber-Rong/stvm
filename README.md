@@ -1,4 +1,4 @@
-# 注意：该项目以迁移至[CLimber-Rong/stamon](https://github.com/CLimber-Rong/stamon)
+# 注意：该项目已迁移至[CLimber-Rong/stamon](https://github.com/CLimber-Rong/stamon)
 # 关于StamonVM
 * StamonVM（简称STVM）是一个为了自制编程语言而实现的虚拟机
 * Climber-Rong为了实现名为Stamon的自制编程语言，在2023年初开始构思，并在2023年7月创建了这个项目
